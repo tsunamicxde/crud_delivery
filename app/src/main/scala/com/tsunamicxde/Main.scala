@@ -2,6 +2,7 @@ package com.tsunamicxde
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
+import akka.http.scaladsl.server.Directives._
 import akka.stream.Materializer
 import slick.jdbc.PostgresProfile.api._
 
@@ -14,10 +15,16 @@ object Main extends App {
   implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
   val db = Database.forConfig("db")
+
   val userService = new UserService(db)
   val userRoutes = new UserRoutes(userService)
 
-  val bindingFuture = Http().newServerAt("localhost", 8080).bind(userRoutes.routes)
+  val courierService = new CourierService(db)
+  val courierRoutes = new CourierRoutes(courierService)
+
+  val routes = userRoutes.routes ~ courierRoutes.routes
+
+  val bindingFuture = Http().newServerAt("localhost", 8080).bind(routes)
 
   println("Server online at http://localhost:8080/")
   StdIn.readLine()
