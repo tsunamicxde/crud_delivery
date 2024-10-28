@@ -1,5 +1,8 @@
 package com.tsunamicxde
 
+import com.tsunamicxde.routes.{CategoryRoutes, CourierRoutes, ProductRoutes, UserRoutes}
+import com.tsunamicxde.service.{CategoryService, CourierService, ProductService, UserService}
+
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Directives._
@@ -22,7 +25,13 @@ object Main extends App {
   val courierService = new CourierService(db)
   val courierRoutes = new CourierRoutes(courierService)
 
-  val routes = userRoutes.routes ~ courierRoutes.routes
+  val categoryService = new CategoryService(db)
+  val categoryRoutes = new CategoryRoutes(categoryService)
+
+  val productService = new ProductService(db)
+  val productRoutes = new ProductRoutes(productService)
+
+  val routes = userRoutes.routes ~ courierRoutes.routes ~ categoryRoutes.routes ~ productRoutes.routes
 
   val bindingFuture = Http().newServerAt("localhost", 8080).bind(routes)
 

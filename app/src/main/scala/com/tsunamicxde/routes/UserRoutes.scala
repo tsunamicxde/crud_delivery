@@ -1,10 +1,13 @@
-package com.tsunamicxde
+package com.tsunamicxde.routes
+
+import com.tsunamicxde.model.JsonFormats
+import com.tsunamicxde.model.entity.User
+import com.tsunamicxde.service.UserService
 
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import akka.stream.Materializer
-import com.tsunamicxde.model.{JsonFormats, User}
 
 import scala.concurrent.ExecutionContext
 

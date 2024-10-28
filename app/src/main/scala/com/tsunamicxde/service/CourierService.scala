@@ -1,6 +1,7 @@
-package com.tsunamicxde
+package com.tsunamicxde.service
 
-import com.tsunamicxde.model.{Courier, CourierTable}
+import com.tsunamicxde.model.entity.Courier
+import com.tsunamicxde.model.table.CourierTable
 import slick.jdbc.PostgresProfile.api._
 
 import scala.concurrent.{ExecutionContext, Future}

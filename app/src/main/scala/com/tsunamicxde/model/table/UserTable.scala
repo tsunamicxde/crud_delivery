@@ -1,5 +1,6 @@
-package com.tsunamicxde.model
+package com.tsunamicxde.model.table
 
+import com.tsunamicxde.model.entity.User
 import slick.jdbc.PostgresProfile.api._
 
 class UserTable(tag: Tag) extends Table[User](tag, "users") {

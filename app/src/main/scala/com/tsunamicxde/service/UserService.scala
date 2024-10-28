@@ -1,6 +1,7 @@
-package com.tsunamicxde
+package com.tsunamicxde.service
 
-import com.tsunamicxde.model.{User, UserTable}
+import com.tsunamicxde.model.entity.User
+import com.tsunamicxde.model.table.UserTable
 import slick.jdbc.PostgresProfile.api._
 
 import scala.concurrent.{ExecutionContext, Future}

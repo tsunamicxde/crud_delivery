@@ -1,4 +1,4 @@
-package com.tsunamicxde.model
+package com.tsunamicxde.model.entity
 
 trait Person {
   def id: Option[Int]

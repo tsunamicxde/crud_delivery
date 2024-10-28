@@ -1,5 +1,6 @@
-package com.tsunamicxde.model
+package com.tsunamicxde.model.table
 
+import com.tsunamicxde.model.entity.Courier
 import slick.jdbc.PostgresProfile.api._
 
 class CourierTable(tag: Tag) extends Table[Courier](tag, "couriers") {
